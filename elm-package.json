@@ -1,10 +1,10 @@
 {
     "version": "0.1.0",
     "summary": "2048 Implemented in Elm",
-    "repository": "https://github.com/charlespierce/2048-elm.git",
+    "repository": "git@github.com:charlespierce/elm-2048.git",
     "license": "ISC",
     "source-directories": [
-        "."
+        "src"
     ],
     "exposed-modules": [],
     "dependencies": {
