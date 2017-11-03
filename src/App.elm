@@ -52,7 +52,11 @@ update msg model =
                 newBoard =
                     shift direction model
             in
-                newBoard => pickEmptyElement model
+                newBoard
+                    => if model /= newBoard then
+                        pickEmptyElement newBoard
+                       else
+                        Cmd.none
 
         NewTile location ->
             case location of
