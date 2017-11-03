@@ -58,7 +58,7 @@ isLosingBoard : Board -> Bool
 isLosingBoard board =
     let
         rowLocked row =
-            row == collapse row
+            row == collapse row && row == collapseReverse row
 
         locked =
             List.all rowLocked

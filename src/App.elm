@@ -57,7 +57,7 @@ update msg model =
         NewTile location ->
             case location of
                 Nothing ->
-                    model => pickEmptyElement model
+                    model => Cmd.none
 
                 Just tuple ->
                     replace (Tuple.first tuple) (Tuple.second tuple) (Tile 2) model => Cmd.none
@@ -84,7 +84,20 @@ pickEmptyElement model =
 
 view : Model -> Html Msg
 view model =
-    div [] [ viewBoard model ]
+    div []
+        [ viewWinLose isWinningBoard "You Win!" model
+        , viewWinLose isLosingBoard "You Lose!" model
+        , viewBoard model
+        ]
+
+
+viewWinLose : (Model -> Bool) -> String -> Model -> Html Msg
+viewWinLose predicate string model =
+    div [] <|
+        if predicate model then
+            [ text string ]
+        else
+            []
 
 
 viewBoard : Board -> Html Msg
